@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kantor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    </style>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body class="body">
+    <container class="container">
+        <h1 class="container__header">Kalkulator walutowy</h1>
+        <div class="container__content">
+            <form class="js-form">
+                <p>
+                    <label>Mam:
+                        <select class="js-startingCurrency" name="startingCurrency">
+                            <option value="PLN">PLN</option>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="CHF">CHF</option>
+                        </select>
+                    </label>
+                    <label>Chcę otrzymać:
+                        <select class="js-endingCurrency" name="endingCurrency">
+                            <option value="PLN">PLN</option>
+                            <option value="USD" selected>USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="CHF">CHF</option>
+                        </select>
+                    </label>
+                </p>
+                <p>
+                    <label for="name">
+                        Kwota: <input class="js-startingAmount" type="number" required name="name" id="name"
+                            placeholder="Wpisz kwotę" value="1" autofokus min="0.01" step="0.01">
+                    </label>
+                </p>
+                    <button class="container__button">Oblicz</button>
+                <p>
+                    Kurs: <span class="js-exchangeOut">1 PLN = 0.2274 USD</span><br>
+                    Kwota w <span class="js-endingAmountOut">USD: 0.23</span>
+                </p>
+            </form>
+        </div>
+    </container>
+</body>
+
+</html>
