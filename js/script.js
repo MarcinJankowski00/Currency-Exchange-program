@@ -1,75 +1,75 @@
-/* Zmienne wejściowe*/
-let startingCurrencyElement = document.querySelector(".js-startingCurrency");
-let endingCurrencyElement = document.querySelector(".js-endingCurrency");
-let startingAmountElement = document.querySelector(".js-startingAmount");
-let formElement = document.querySelector(".js-form");
-/* Zmienne na wyjście */
-let exchangeOutElement = document.querySelector(".js-exchangeOut");
-let endingAmountOutElement = document.querySelector(".js-endingAmountOut");
-/* Aktualne kursy walut i inne zmienne */
-/* Kursy PLN/X */
-let EUR_exchange = 4.6709;
-let USD_exchange = 4.397;
-let GBP_exchange = 5.2892;
-let CHF_exchange = 4.7437;
-/* Kursy X/PLN */
-let PLN_USD_exchange = 0.2274;
-let PLN_EUR_exchange = 0.2141;
-let PLN_GBP_exchange = 0.1891;
-let PLN_CHF_exchange = 0.2108;
-let exchange = 0;
-let endingAmount = 0;
-let Amount = 0;
-let exchangeOut = 0;
+{
+    const pickExchange = (endingCurrency) => {
+        const EUR_exchange = 4.6709;
+        const USD_exchange = 4.397;
+        const GBP_exchange = 5.2892;
+        const CHF_exchange = 4.7437;
 
-formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    let startingCurrency = startingCurrencyElement.value;
-    let endingCurrency = endingCurrencyElement.value;
-    let startingAmount = startingAmountElement.value;
-    /* Przypisuję kurs PLN/X do zmiennej "exchange" w zależności jaka waluta wyjściowa została wybrana */
-    switch (endingCurrency) {
-        case "EUR":
-            exchange = EUR_exchange;
-            break;
-        case "USD":
-            exchange = USD_exchange;
-            break;
-        case "GBP":
-            exchange = GBP_exchange;
-            break;
-        case "CHF":
-            exchange = CHF_exchange;
-            break;
-        default:
-            exchange = 1;
+        switch (endingCurrency) {
+            case "EUR":
+                return EUR_exchange;
+            case "USD":
+                return USD_exchange;
+            case "GBP":
+                return GBP_exchange;
+            case "CHF":
+                return CHF_exchange;
+            default:
+                return 1;
+        }
     }
-    /* Zamieniam walutę wejściową na PLN */
-    switch (startingCurrency) {
-        case "EUR":
-            Amount = startingAmount / PLN_EUR_exchange;
-            break;
-        case "USD":
-            Amount = startingAmount / PLN_USD_exchange;
-            break;
-        case "GBP":
-            Amount = startingAmount / PLN_GBP_exchange;
-            break;
-        case "CHF":
-            Amount = startingAmount / PLN_CHF_exchange;
-            break;
-        default:
-            Amount = startingAmount;
+
+    const turnIntoPLN = (startingCurrency, startingAmount) => {
+        const PLN_USD_exchange = 0.2274;
+        const PLN_EUR_exchange = 0.2141;
+        const PLN_GBP_exchange = 0.1891;
+        const PLN_CHF_exchange = 0.2108;
+
+        switch (startingCurrency) {
+            case "EUR":
+                return startingAmount / PLN_EUR_exchange;
+            case "USD":
+                return startingAmount / PLN_USD_exchange;
+            case "GBP":
+                return startingAmount / PLN_GBP_exchange;
+            case "CHF":
+                return startingAmount / PLN_CHF_exchange;
+            default:
+                return startingAmount;
+        }
     }
-    /* Obliczam kwotę wyjściową i kurs */
-    endingAmount = Amount / exchange;
-    exchangeOut = endingAmount / startingAmount;
 
-    /* Zaokrąglanie */
-    endingAmount = endingAmount.toFixed(2);
-    exchangeOut = exchangeOut.toFixed(4);
+    const updateResultTextFirst = (startingCurrency, exchangeOut, endingCurrency) => {
+        const exchangeOutElement = document.querySelector(".js-exchangeOut");
+        exchangeOutElement.innerText = "1 " + startingCurrency + " = " + exchangeOut.toFixed(4) + " " + endingCurrency;
+    }
 
-    exchangeOutElement.innerText = "1 " + startingCurrency + " = " + exchangeOut + " " + endingCurrency;
-    endingAmountOutElement.innerText = endingCurrency + ": " + endingAmount;
-});
+    const updateResultTextSecond = (endingCurrency, endingAmount) => {
+        const endingAmountOutElement = document.querySelector(".js-endingAmountOut");
+        endingAmountOutElement.innerText = endingCurrency + ": " + endingAmount.toFixed(2);
+    }
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const startingAmountElement = document.querySelector(".js-startingAmount");
+        const startingCurrencyElement = document.querySelector(".js-startingCurrency");
+        const endingCurrencyElement = document.querySelector(".js-endingCurrency");
+        const startingAmount = startingAmountElement.value;
+        const startingCurrency = startingCurrencyElement.value;
+        const endingCurrency = endingCurrencyElement.value;
+
+        const endingAmount = turnIntoPLN(startingCurrency, startingAmount) / pickExchange(endingCurrency);;
+        const exchangeOut = endingAmount / startingAmount;
+
+        updateResultTextFirst(startingCurrency, exchangeOut, endingCurrency);
+        updateResultTextSecond(endingCurrency, endingAmount);
+
+    }
+
+    const init = () => {
+        const formElement = document.querySelector(".js-form");
+        formElement.addEventListener("submit", onFormSubmit);
+    }
+
+    init();
+}
