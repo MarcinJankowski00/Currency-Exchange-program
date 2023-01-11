@@ -17,7 +17,7 @@
             default:
                 return 1;
         }
-    }
+    };
 
     const turnIntoPLN = (startingCurrency, startingAmount) => {
         const PLN_USD_exchange = 0.2274;
@@ -37,21 +37,21 @@
             default:
                 return startingAmount;
         }
-    }
+    };
     
     const calculateResult = (amount, exchange) => {
         return amount / exchange;
-    }
+    };
 
     const updateResultTextFirst = (startingCurrency, exchangeOut, endingCurrency) => {
         const exchangeOutElement = document.querySelector(".js-exchangeOut");
         exchangeOutElement.innerText = "1 " + startingCurrency + " = " + exchangeOut.toFixed(4) + " " + endingCurrency;
-    }
+    };
 
     const updateResultTextSecond = (endingCurrency, endingAmount) => {
         const endingAmountOutElement = document.querySelector(".js-endingAmountOut");
         endingAmountOutElement.innerText = endingCurrency + ": " + endingAmount.toFixed(2);
-    }
+    };
 
     const onFormSubmit = (event) => {
         event.preventDefault();
@@ -65,12 +65,12 @@
         updateResultTextFirst(startingCurrency, calculateResult (calculateResult(turnIntoPLN(startingCurrency, startingAmount), pickExchange(endingCurrency)), startingAmount), endingCurrency);
         updateResultTextSecond(endingCurrency, calculateResult(turnIntoPLN(startingCurrency, startingAmount), pickExchange(endingCurrency)));
 
-    }
+    };
 
     const init = () => {
         const formElement = document.querySelector(".js-form");
         formElement.addEventListener("submit", onFormSubmit);
-    }
+    };
 
     init();
 }
