@@ -38,6 +38,7 @@
                 return startingAmount;
         }
     }
+    
     const calculateResult = (amount, exchange) => {
         return amount / exchange;
     }
