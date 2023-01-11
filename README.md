@@ -15,5 +15,7 @@ Then, in the next selection field, select the currency you want to exchange for.
 
 Finally, enter the amount in the field below and press the button that says "Oblicz".
 
+The exchange rate and the converted amount will be displayed below.
+
 ### Included conventions:
 - BEM naming convention
