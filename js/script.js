@@ -38,6 +38,9 @@
                 return startingAmount;
         }
     }
+    const calculateResult = (amount, exchange) => {
+        return amount / exchange;
+    }
 
     const updateResultTextFirst = (startingCurrency, exchangeOut, endingCurrency) => {
         const exchangeOutElement = document.querySelector(".js-exchangeOut");
@@ -58,11 +61,8 @@
         const startingCurrency = startingCurrencyElement.value;
         const endingCurrency = endingCurrencyElement.value;
 
-        const endingAmount = turnIntoPLN(startingCurrency, startingAmount) / pickExchange(endingCurrency);;
-        const exchangeOut = endingAmount / startingAmount;
-
-        updateResultTextFirst(startingCurrency, exchangeOut, endingCurrency);
-        updateResultTextSecond(endingCurrency, endingAmount);
+        updateResultTextFirst(startingCurrency, calculateResult (calculateResult(turnIntoPLN(startingCurrency, startingAmount), pickExchange(endingCurrency)), startingAmount), endingCurrency);
+        updateResultTextSecond(endingCurrency, calculateResult(turnIntoPLN(startingCurrency, startingAmount), pickExchange(endingCurrency)));
 
     }
 
