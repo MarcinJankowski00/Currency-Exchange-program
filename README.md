@@ -3,6 +3,8 @@
 ## Demo
 https://marcinjankowski00.github.io/Currency-Exchange-program/
 
+![Website preview] (https://github.com/MarcinJankowski00/Currency-Exchange-program/blob/main/images/calc_preview.png?raw=true)
+
 ## Description
 A website that contains program that exchanges currencies. There are 5 currencies to choose from: PLN, EUR, USD, GBP, CHF. 
 
