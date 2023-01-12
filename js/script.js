@@ -1,39 +1,39 @@
 {
     const pickExchange = (endingCurrency) => {
-        const EUR_exchange = 4.6709;
-        const USD_exchange = 4.397;
-        const GBP_exchange = 5.2892;
-        const CHF_exchange = 4.7437;
+        const eurExchange = 4.6709;
+        const usdExchange = 4.397;
+        const gbpExchange = 5.2892;
+        const chfExchange = 4.7437;
 
         switch (endingCurrency) {
             case "EUR":
-                return EUR_exchange;
+                return eurExchange;
             case "USD":
-                return USD_exchange;
+                return usdExchange;
             case "GBP":
-                return GBP_exchange;
+                return gbpExchange;
             case "CHF":
-                return CHF_exchange;
+                return chfExchange;
             default:
                 return 1;
         }
     };
 
     const turnIntoPLN = (startingCurrency, startingAmount) => {
-        const PLN_USD_exchange = 0.2274;
-        const PLN_EUR_exchange = 0.2141;
-        const PLN_GBP_exchange = 0.1891;
-        const PLN_CHF_exchange = 0.2108;
+        const plnUsdExchange = 0.2274;
+        const plnEurExchange = 0.2141;
+        const plnGbpExchange = 0.1891;
+        const plnChfExchange = 0.2108;
 
         switch (startingCurrency) {
             case "EUR":
-                return startingAmount / PLN_EUR_exchange;
+                return startingAmount / plnEurExchange;
             case "USD":
-                return startingAmount / PLN_USD_exchange;
+                return startingAmount / plnUsdExchange;
             case "GBP":
-                return startingAmount / PLN_GBP_exchange;
+                return startingAmount / plnGbpExchange;
             case "CHF":
-                return startingAmount / PLN_CHF_exchange;
+                return startingAmount / plnChfExchange;
             default:
                 return startingAmount;
         }
@@ -62,8 +62,10 @@
         const startingCurrency = startingCurrencyElement.value;
         const endingCurrency = endingCurrencyElement.value;
 
-        updateResultTextFirst(startingCurrency, calculateResult (calculateResult(turnIntoPLN(startingCurrency, startingAmount), pickExchange(endingCurrency)), startingAmount), endingCurrency);
-        updateResultTextSecond(endingCurrency, calculateResult(turnIntoPLN(startingCurrency, startingAmount), pickExchange(endingCurrency)));
+        const plnValue = turnIntoPLN(startingCurrency, startingAmount);
+
+        updateResultTextFirst(startingCurrency, calculateResult (calculateResult(plnValue, pickExchange(endingCurrency)), startingAmount), endingCurrency);
+        updateResultTextSecond(endingCurrency, calculateResult(plnValue, pickExchange(endingCurrency)));
 
     };
 
