@@ -13,6 +13,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="css/style.css" rel="stylesheet">
     <link href="css/container.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
@@ -24,44 +25,54 @@
 </head>
 
 <body class="body">
-    <container class="container">
-        <h1 class="container__header">Kalkulator walutowy</h1>
-        <div class="container__content">
-            <form class="js-form">
+    <div class="container">
+        <form class="js-form form">
+            <h1 class="form__header">Kalkulator walutowy</h1>
+            <div class="form__element">
                 <p>
-                    <label>Mam:
-                        <select class="js-startingCurrency" name="startingCurrency">
-                            <option value="PLN">PLN</option>
-                            <option value="USD">USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="CHF">CHF</option>
+                    <label>
+                        <span class="form__labelText">
+                            Mam:
+                        </span>
+                        <select class="js-startingCurrency form__field" name="startingCurrency">
+                            <option value="PLN">PLN - Polska</option>
+                            <option value="USD">USD - Stany Zjednoczone</option>
+                            <option value="EUR">EUR - Unia Europejska</option>
+                            <option value="GBP">GBP - Wielka Brytania</option>
+                            <option value="CHF">CHF - Szwajcaria</option>
                         </select>
                     </label>
-                    <label>Chcę otrzymać:
-                        <select class="js-endingCurrency" name="endingCurrency">
-                            <option value="PLN">PLN</option>
-                            <option value="USD" selected>USD</option>
-                            <option value="EUR">EUR</option>
-                            <option value="GBP">GBP</option>
-                            <option value="CHF">CHF</option>
+                </p>
+                <p>
+                    <label>
+                        <span class="form__labelText">
+                            Chcę otrzymać:
+                        </span>
+                        <select class="js-endingCurrency form__field" name="endingCurrency">
+                            <option value="PLN">PLN - Polska</option>
+                            <option value="USD" selected>USD - Stany Zjednoczone</option>
+                            <option value="EUR">EUR - Unia Europejska</option>
+                            <option value="GBP">GBP - Wielka Brytania</option>
+                            <option value="CHF">CHF - Szwajcaria</option>
                         </select>
                     </label>
                 </p>
                 <p>
                     <label for="name">
-                        Kwota: <input class="js-startingAmount" type="number" required name="name" id="name"
+                        <span class="form__labelText">
+                            Kwota: </span>
+                        <input class="js-startingAmount form__field" type="number" required name="name" id="name"
                             placeholder="Wpisz kwotę" value="1" autofokus min="0.01" step="0.01">
                     </label>
                 </p>
-                <button class="container__button">Oblicz</button>
-                <p>
-                    Kurs: <span class="js-exchangeOut">1 PLN = 0.2274 USD</span><br>
-                    Kwota w <span class="js-endingAmountOut">USD: 0.23</span>
-                </p>
-            </form>
-        </div>
-    </container>
+            </div>
+            <button class="form__button">Oblicz</button>
+            <p>
+                Kurs: <span class="js-exchangeOut">1 PLN = 0.2274 USD</span><br>
+                Kwota w <span class="js-endingAmountOut">USD: 0.23</span>
+            </p>
+        </form>
+    </div>
 </body>
 
 </html>
