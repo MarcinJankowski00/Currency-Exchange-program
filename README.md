@@ -19,5 +19,9 @@ Finally, enter the amount in the field below and press the button that says "Obl
 
 The exchange rate and the converted amount will be displayed below.
 
-### Included conventions:
+### Included techonologies and conventions:
+- JavaScript
+- CSS
+- HTML
+- CamelCase naming convention
 - BEM naming convention
