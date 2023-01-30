@@ -30,19 +30,21 @@ html {
 }
 
 .form__button {
-    background-color: rgb(164, 128, 85);
+    background-color: rgb(155, 122, 81);
     width: 100%;
     border-radius: 5px;
     padding: 10px;
-    box-shadow: 0px 0px 20px -4px #1E1A1A;
+    box-shadow: 0px 0px 20px -4px #1e1a1a;
     transition: 0.3s;
+    border: 1px solid rgb(69, 69, 69);
+    cursor: pointer;
 }
 
 .form__button:hover {
-    background-color: rgb(176, 138, 92);
+    background-color: rgb(172, 135, 90);
 }
 
 .form__button:active {
-    background-color: rgb(176, 138, 92);
+    background-color: rgb(196, 154, 103);
     box-shadow: none;
 }
