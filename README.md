@@ -10,7 +10,7 @@ A website that contains program that exchanges currencies. There are 5 currencie
 
 The website is in polish language
 
-## Website theme - instruction
+## Instruction
 To use the calculator, select the currency you want to exchange in the first selection field.
 
 Then, in the next selection field, select the currency you want to exchange for.
